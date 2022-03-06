@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ScreenShotController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(ScreenShotController::class)->group(function () {
+    Route::get('/screenshot', 'index')->name('screenshot.index');
+    Route::post('/screenshot/store', 'store')->name('screenshot.store');
 });
